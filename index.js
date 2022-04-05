@@ -25,8 +25,8 @@ app.use("/user",userRoutes);
 })*/
 
 
-const CONNECTION_URL = "mongodb://127.0.0.1:27017/keepDB";
-//const CONNECTION_URL = process.env.CONNECTION_URL;
+//const CONNECTION_URL = "mongodb://127.0.0.1:27017/keepDB";
+const CONNECTION_URL = process.env.CONNECTION_URL;
 
 const PORT = process.env.PORT || 5000;
 
