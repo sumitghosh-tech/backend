@@ -19,10 +19,9 @@ app.use(cors());
 
 app.use("/posts",postRoutes);//every routes of postRoutes will start with /posts --->it is a middleware.
 app.use("/user",userRoutes);
-app.get("/",(req,res)=>
-{
+app.get("/", (req, res) => {
     res.send("Hello");
-})
+  });
 
 
 const CONNECTION_URL = process.env.CONNECTION_URL;
@@ -31,7 +30,7 @@ const PORT = 5000||process.env.PORT ;
 
 mongoose.connect(process.env.CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
 
-    .then(()=> app.listen(PORT, ()=> console.log(`server running on: ${[PORT,CONNECTION_URL]}`)))
+    .then(()=> app.listen(PORT, ()=> console.log(`server conn: ${[CONNECTION_URL]}`)))
 
     .catch((error)=> console.log(error.message));
 
