@@ -29,20 +29,7 @@ export const getPost=async(req,res)=>{    //find and see a post
     }
 }
 
-export const getPostsBySearch = async (req, res) => {
-    const { searchQuery, tags } = req.query;
 
-    try {
-        const title = new RegExp(searchQuery, "i");
-
-        const d = await PostMessage.find({ $or: [ { title }, { tags: { $in: tags.split(',') } } ]});
-        //console.log({d:d});
-        res.status(202).json({d:d});  //if res==200 then postMessages will be printed as json
-
-        } catch (error) {    
-        res.status(404).json({ message: error.message });
-    }
-}
 export const createPost = async (req, res) => {  //create a function
 
     const post = req.body;
@@ -92,14 +79,48 @@ export const deletePost= async (req,res) =>{
     }
 }
 
-export const likePost = async (req, res) => {
-    const { id } = req.params;
 
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
-    
-    const  post =await PostMessage.findById(id);
 
-    const updatedPost = await PostMessage.findByIdAndUpdate(id, { new: true });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// export const getPostsBySearch = async (req, res) => {
+//     const { searchQuery, tags } = req.query;
+
+//     try {
+//         const title = new RegExp(searchQuery, "i");
+
+//         const d = await PostMessage.find({ $or: [ { title }, { tags: { $in: tags.split(',') } } ]});
+//         //console.log({d:d});
+//         res.status(202).json({d:d});  //if res==200 then postMessages will be printed as json
+
+//         } catch (error) {    
+//         res.status(404).json({ message: error.message });
+//     }
+// }
+
+// export const likePost = async (req, res) => {
+//     const { id } = req.params;
+
+//     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
     
-    res.json(updatedPost);
-}
+//     const  post =await PostMessage.findById(id);
+
+//     const updatedPost = await PostMessage.findByIdAndUpdate(id, { new: true });
+    
+//     res.json(updatedPost);
+// }

@@ -19,20 +19,19 @@ app.use(cors());
 
 app.use("/posts",postRoutes);//every routes of postRoutes will start with /posts --->it is a middleware.
 app.use("/user",userRoutes);
-/*app.get("/",(req,res)=>
+app.get("/",(req,res)=>
 {
     res.send("Hello");
-})*/
+})
 
 
-//const CONNECTION_URL = "mongodb://127.0.0.1:27017/keepDB";
 const CONNECTION_URL = process.env.CONNECTION_URL;
+//mongodb+srv://Sumit:<password>@cluster0.ebwns.mongodb.net/?retryWrites=true&w=majority
+const PORT = 5000||process.env.PORT ;
 
-const PORT = process.env.PORT || 5000;
+mongoose.connect(process.env.CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
 
-mongoose.connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
-
-    .then(()=> app.listen(PORT, ()=> console.log(`server running on: ${[PORT]}`)))
+    .then(()=> app.listen(PORT, ()=> console.log(`server running on: ${[PORT,CONNECTION_URL]}`)))
 
     .catch((error)=> console.log(error.message));
 
