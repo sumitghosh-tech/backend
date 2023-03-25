@@ -20,7 +20,7 @@ app.use(cors());
 app.use("/posts",postRoutes);//every routes of postRoutes will start with /posts --->it is a middleware.
 app.use("/user",userRoutes);
 app.get("/", (req, res) => {
-    res.send("Hello");
+    res.send("Hello from railway....😃🙂😃");
   });
 
 
